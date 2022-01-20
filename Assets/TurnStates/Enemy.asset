@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fafa5a116fe3e3a4bb624245ff1fd4c3, type: 3}
+  m_Name: Enemy
+  m_EditorClassIdentifier: 
+  DisplayName: Enemy
+  ValidNextTurnStates:
+  - {fileID: 11400000, guid: 471ed7f4b8f2df247be4dcb52406ea43, type: 2}
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: e1049c70c521bac45a12fa9dc51d4fa4, type: 2}

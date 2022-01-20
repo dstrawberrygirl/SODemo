@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84ea1921b46e424b83d44efda1b372c, type: 3}
+  m_Name: Blue
+  m_EditorClassIdentifier: 
+  CharacterName: Blue
+  InitialHealth: 100
+  Abilities:
+  - {fileID: 11400000, guid: 2814182ad39f75548881beeec95ed2c2, type: 2}
+  - {fileID: 11400000, guid: 5960e6b3d8d8f994ea7c72e2018eb1c7, type: 2}
+  CharacterFaction: 1
