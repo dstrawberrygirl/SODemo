@@ -5,16 +5,18 @@ using UnityEngine;
 public class CharacterBehaviour : MonoBehaviour
 {
     public Character CharacterTemplate;
-    
-    // Start is called before the first frame update
-    void Start()
+    public Faction CharacterFaction;
+    private float _currentHealth;
+    public float CurrentHealth => _currentHealth;
+    public float CurrentHealthNormalized => _currentHealth / 100;
+
+    private void Start()
     {
-        
+        _currentHealth = CharacterTemplate.InitialHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HandleDamageTaken(float incomingDamage)
     {
-        
+        _currentHealth = Mathf.Clamp(_currentHealth - incomingDamage, 0, 100f);
     }
 }

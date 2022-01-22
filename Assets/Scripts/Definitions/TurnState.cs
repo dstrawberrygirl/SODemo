@@ -16,7 +16,6 @@ public class TurnState : ScriptableObject
             DisplayName = this.name;
         }
     }
-
     public TurnState GetNextTurnState()
     {
         return ValidNextTurnStates[0];

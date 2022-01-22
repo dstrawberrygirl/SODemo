@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84ea1921b46e424b83d44efda1b372c, type: 3}
   m_Name: Green
   m_EditorClassIdentifier: 
-  CharacterName: Anna
+  CharacterName: Green
+  InitialHealth: 100
   Abilities:
   - {fileID: 11400000, guid: 2814182ad39f75548881beeec95ed2c2, type: 2}
   - {fileID: 11400000, guid: 71101d3a96da8c74b9ab5184e6dfef44, type: 2}
-  CharacterFaction: 0
+  Prefab: {fileID: 6990111199065779055, guid: f22f7e7a6f771a448950d662f497cc40, type: 3}

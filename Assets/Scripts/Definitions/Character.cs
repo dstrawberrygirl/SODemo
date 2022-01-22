@@ -9,7 +9,8 @@ public class Character : ScriptableObject
     public string CharacterName;
     public float InitialHealth = 100f;
     public List<Attack> Abilities;
-    public Faction CharacterFaction;
+    public GameObject Prefab;
+
 #if UNITY_EDITOR
     private void OnValidate()
     {

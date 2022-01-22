@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c84ea1921b46e424b83d44efda1b372c, type: 3}
-  m_Name: Blue
+  m_Name: Orange
   m_EditorClassIdentifier: 
-  CharacterName: Blue
+  CharacterName: Orange
   InitialHealth: 100
   Abilities:
-  - {fileID: 11400000, guid: 2814182ad39f75548881beeec95ed2c2, type: 2}
   - {fileID: 11400000, guid: 5960e6b3d8d8f994ea7c72e2018eb1c7, type: 2}
-  CharacterFaction: 1
+  - {fileID: 11400000, guid: cecd6c1d3e3617c4bbd5e6f33c2cfd7c, type: 2}
+  Prefab: {fileID: 5461150039906036299, guid: 4a0e69760a3cf1344a0319f9323eb747, type: 3}
