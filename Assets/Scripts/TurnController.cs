@@ -10,12 +10,13 @@ public class TurnController : ScriptableObject
     [SerializeField] private TurnState _endTurnState;
     [SerializeField] private TurnState _playerTurnState;
     [SerializeField] private TurnState _enemyTurnState;
+    public TurnStateEvent TurnStateChangedEvent = default;
     private List<TurnState> _turnOrder = new List<TurnState>();
     public List<TurnState> TurnOrder => _turnOrder;
     public TurnState CurrentTurnState => _turnOrder[_turnIdx] ? _turnOrder[_turnIdx] : _startTurnState;
     private int _turnIdx;
     public int TurnIdx => _turnIdx;
-    private int _turnsPerRound = 3;
+    [SerializeField] private int _turnsPerRound = 6;
     public int TurnsPerRound => _turnsPerRound;
     private int _roundCounter;
     public int RoundCounter => _roundCounter;
@@ -24,7 +25,33 @@ public class TurnController : ScriptableObject
         _turnIdx = 1;
         _roundCounter += 1;
         Debug.Log($"Starting round, first turn: {CurrentTurnState}");
-        // _turnStateChangedEvent.Raise(new TurnStateEventPayload() { turnState = CurrentTurnState });
+        TurnStateChangedEvent.Raise(new TurnStateEventPayload() { CurrentTurn = CurrentTurnState });
+    }
+    public void EndTurn()
+    {
+        if (CurrentTurnState != _endTurnState)
+        {
+            _turnIdx++;
+            
+            if (CurrentTurnState == _endTurnState)
+            {
+                Debug.Log("End of round!");
+                EndRound();
+            } else 
+            {
+                TurnStateChangedEvent.Raise(new TurnStateEventPayload() { CurrentTurn = CurrentTurnState });
+            }
+        }
+        else
+        {
+            Debug.Log($"at the end already {CurrentTurnState}");
+        }
+    }
+
+    public void EndRound()
+    {
+        _turnIdx = 0;
+        TurnStateChangedEvent.Raise(new TurnStateEventPayload() { CurrentTurn = CurrentTurnState });
     }
 
     public void InitializeTurns()
@@ -44,6 +71,6 @@ public class TurnController : ScriptableObject
 
         _turnOrder.Add(_endTurnState);
         // if (_turnOrderUpdateEvent) _turnOrderUpdateEvent.Raise();
-        // _turnStateChangedEvent.Raise(new TurnStateEventPayload() { turnState = CurrentTurnState });
+        TurnStateChangedEvent.Raise(new TurnStateEventPayload() { CurrentTurn = CurrentTurnState });
     }
 }

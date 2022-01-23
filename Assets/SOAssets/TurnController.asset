@@ -16,3 +16,4 @@ MonoBehaviour:
   _endTurnState: {fileID: 11400000, guid: e1049c70c521bac45a12fa9dc51d4fa4, type: 2}
   _playerTurnState: {fileID: 11400000, guid: 471ed7f4b8f2df247be4dcb52406ea43, type: 2}
   _enemyTurnState: {fileID: 11400000, guid: 3f68beaa6dfc20f4eb6cbb9016cfffff, type: 2}
+  TurnStateChangedEvent: {fileID: 11400000, guid: 2f9b360efb1e8ba4fa6e92f11db957bf, type: 2}

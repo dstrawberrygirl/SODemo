@@ -20,4 +20,9 @@ public class Character : ScriptableObject
         }
     }
 #endif
+
+
+    #region SOAEnhanced
+    public ScriptableObjectArchitecture.FloatVariable Health;
+    #endregion
 }
