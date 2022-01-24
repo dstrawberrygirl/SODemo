@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ToxicExplosion
   m_EditorClassIdentifier: 
   DisplayName: Toxic Explosion
-  DisplayIcon: {fileID: 0}
+  DisplayIcon: {fileID: 21300000, guid: d63a35005af0a224fa80451773b2dafb, type: 3}
   DamageToEnemy: 20
   DamageToSelf: 5
-  AttackFX: {fileID: 0}
+  AttackFX: {fileID: 7634109131792290002, guid: 9e04708d38e8dd944b2ce2870efca46a, type: 3}

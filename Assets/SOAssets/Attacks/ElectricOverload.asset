@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ElectricOverload
   m_EditorClassIdentifier: 
   DisplayName: Electric Overload
-  DisplayIcon: {fileID: 0}
+  DisplayIcon: {fileID: 21300000, guid: 9ad23098d3a1bfc45a3f4ef1947650d4, type: 3}
   DamageToEnemy: 25
   DamageToSelf: 10
-  AttackFX: {fileID: 0}
+  AttackFX: {fileID: 7983333105250824531, guid: 002fd5630657b2340a7d6677a8e78afa, type: 3}

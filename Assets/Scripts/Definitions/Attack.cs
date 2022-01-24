@@ -6,7 +6,7 @@ using UnityEngine;
 public class Attack : ScriptableObject
 {
     public string DisplayName;
-    public Texture2D DisplayIcon;
+    public Sprite DisplayIcon;
     public float DamageToEnemy;
     public float DamageToSelf;
 

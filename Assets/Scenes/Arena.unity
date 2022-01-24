@@ -154,9 +154,9 @@ RectTransform:
   m_Father: {fileID: 324630086}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &302579456
@@ -241,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &324630086
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1325,9 +1325,9 @@ RectTransform:
   m_Father: {fileID: 324630086}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &984032424
@@ -1361,15 +1361,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameState: {fileID: 11400000, guid: 7eef0a68ce1570849acf95807022ebb9, type: 2}
   _turnController: {fileID: 11400000, guid: 157a1d3127224664dbfe148c0eebc936, type: 2}
-  _enemies: {fileID: 11400000, guid: 083caeeb49da0fe4ea0d7989253cc92c, type: 2}
   _allCharacters:
   - {fileID: 11400000, guid: ebb2adfe79f59f94ba2bad65d2d21b94, type: 2}
   - {fileID: 11400000, guid: 49c2175f8f045784499e2f972edd0266, type: 2}
   - {fileID: 11400000, guid: 958d19c1e970a514b82bc3df503ed2e7, type: 2}
   - {fileID: 11400000, guid: 1a223594c81f12d43877931627ed8761, type: 2}
-  _currentTarget: {fileID: 11400000, guid: 2b6bf8eb550bca946b94ca530147b319, type: 2}
   PlayerSelected: {fileID: 11400000, guid: 69666554d516d214182a1699f1e5da9d, type: 2}
   CustomPlayerSelected: {fileID: 11400000, guid: d83b58c2b76aa1347bfee08fcb223b84, type: 2}
+  _enemies: {fileID: 11400000, guid: 083caeeb49da0fe4ea0d7989253cc92c, type: 2}
+  _currentTarget: {fileID: 11400000, guid: 2b6bf8eb550bca946b94ca530147b319, type: 2}
 --- !u!4 &984032426
 Transform:
   m_ObjectHideFlags: 0
@@ -1663,7 +1663,7 @@ GameObject:
   - component: {fileID: 1291075432}
   - component: {fileID: 1291075433}
   m_Layer: 5
-  m_Name: Players
+  m_Name: Abilities
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1683,11 +1683,11 @@ RectTransform:
   m_Father: {fileID: 897158171}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -150}
-  m_SizeDelta: {x: 0, y: 300}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 75}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1291075433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1706,12 +1706,12 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
+  m_Spacing: 20
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
+  m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!1 &1358038595

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireBlast
   m_EditorClassIdentifier: 
   DisplayName: Fire Blast
-  DisplayIcon: {fileID: 0}
+  DisplayIcon: {fileID: 21300000, guid: 508009994a0e87f40ae7b1bc0f0bfac8, type: 3}
   DamageToEnemy: 20
   DamageToSelf: 5
-  AttackFX: {fileID: 0}
+  AttackFX: {fileID: 3250267332320686614, guid: d17764c84facb7c47a2787b9276d9a01, type: 3}
