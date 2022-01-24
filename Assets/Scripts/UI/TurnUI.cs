@@ -11,6 +11,8 @@ public class TurnUI : MonoBehaviour
     
     private void Start()
     {
+        // This can end up in a race condition, where the turn controller initialization has already happened and we miss
+        // the first event. Ideally, we'd have a "game start" event after the turn controller is set up before hitting this
         _turnController.TurnStateChangedEvent.AddListener(HandleTurnStateChanged);
     }
 
@@ -23,7 +25,7 @@ public class TurnUI : MonoBehaviour
     {
         Debug.Log($"Current turn: {evt.CurrentTurn}");
 
-        if (_turnController.TurnIdx == 0)
+        if (_turnController.TurnIdx == 0 || _turns == null || _turns.Count == 0)
         {
             // Start round, remove previous turn display items
             if (_turns != null && _turns.Count > 0)
@@ -43,22 +45,19 @@ public class TurnUI : MonoBehaviour
                 _turns.Add(turnDetails);
             }
         }
-        else
+        for (int i = 0; i < _turns.Count; i++)
         {
-            for (int i = 0; i < _turns.Count; i++)
+            if (i < _turnController.TurnIdx)
             {
-                if (i < _turnController.TurnIdx)
-                {
-                    _turns[i].GetComponentInChildren<Image>().color = Color.gray;
-                }
-                if (i == _turnController.TurnIdx)
-                {
-                    _turns[i].GetComponentInChildren<Image>().color = Color.green;
-                }
-                else 
-                {
-                    _turns[i].GetComponentInChildren<Image>().color = Color.white;
-                }
+                _turns[i].GetComponentInChildren<Image>().color = Color.gray;
+            }
+            if (i == _turnController.TurnIdx)
+            {
+                _turns[i].GetComponentInChildren<Image>().color = Color.green;
+            }
+            else 
+            {
+                _turns[i].GetComponentInChildren<Image>().color = Color.white;
             }
         }
     }

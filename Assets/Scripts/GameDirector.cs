@@ -8,13 +8,14 @@ public class GameDirector : MonoBehaviour
     
     [SerializeField] private GameState _gameState;
     [SerializeField] private TurnController _turnController;
-    [SerializeField] private GameObjectCollection _enemies;
     [SerializeField] private List<Character> _allCharacters;
-    [SerializeField] private GameObjectVariable _currentTarget;
 
     #region SOA Enhance
     public GameEvent PlayerSelected;
     public PlayerSelectedCustomEvent CustomPlayerSelected;
+    [SerializeField] private GameObjectCollection _enemies;
+    [SerializeField] private GameObjectVariable _currentTarget;
+    private int _targetIdx;
     #endregion
     private void Start()
     {
@@ -115,9 +116,41 @@ public class GameDirector : MonoBehaviour
             Debug.Log($"Starting new game with {_gameState.PlayerCharacter.CharacterName}");
         } 
         _turnController.StartRound();
-        int enemyIdx = Random.Range(0, _enemies.Count - 1);
+        _targetIdx = 0;
+        _currentTarget.Value = _enemies[_targetIdx];
 
-        _currentTarget.Value = _enemies[enemyIdx];
+        _gameState.StartGame();
+    }
 
+    public void Update()
+    {
+        if (_gameState.CurrentPhase != GamePhase.Started)
+        {
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (_targetIdx + 1 >= _enemies.Count)
+            {
+                _targetIdx = 0;
+            } 
+            else 
+            {
+                _targetIdx += 1;
+            }
+            _currentTarget.Value = _enemies[_targetIdx];
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (_targetIdx - 1 < 0)
+            {
+                _targetIdx = _enemies.Count - 1;
+            } 
+            else 
+            {
+                _targetIdx -= 1;
+            }
+            _currentTarget.Value = _enemies[_targetIdx];
+        }
     }
 }

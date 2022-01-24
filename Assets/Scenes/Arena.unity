@@ -1367,6 +1367,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 49c2175f8f045784499e2f972edd0266, type: 2}
   - {fileID: 11400000, guid: 958d19c1e970a514b82bc3df503ed2e7, type: 2}
   - {fileID: 11400000, guid: 1a223594c81f12d43877931627ed8761, type: 2}
+  _currentTarget: {fileID: 11400000, guid: 2b6bf8eb550bca946b94ca530147b319, type: 2}
   PlayerSelected: {fileID: 11400000, guid: 69666554d516d214182a1699f1e5da9d, type: 2}
   CustomPlayerSelected: {fileID: 11400000, guid: d83b58c2b76aa1347bfee08fcb223b84, type: 2}
 --- !u!4 &984032426
