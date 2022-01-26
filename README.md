@@ -9,4 +9,4 @@ This project was built using Unity 2020.3.26f1, though the code should work as i
 4. Launch Unity, open the Arena scene and hit Play.
 
 ## The Contents
-This project is intended purely as a demo, and not for production use. More of a "you can" instead of a "you should",
+This project is intended purely as a demo, and not for production use.
