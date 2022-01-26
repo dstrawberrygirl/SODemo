@@ -15,6 +15,7 @@ public class GameDirector : MonoBehaviour
     public PlayerSelectedCustomEvent CustomPlayerSelected;
     [SerializeField] private GameObjectCollection _enemies;
     [SerializeField] private GameObjectVariable _currentTarget;
+    [SerializeField] private GameObjectVariable _currentPlayer;
     private int _targetIdx;
     #endregion
     private void Start()
@@ -78,7 +79,7 @@ public class GameDirector : MonoBehaviour
         {
             if (c != playerCharacter)
             {
-                Vector3 pos = new Vector3((_enemies.Count * 2) + 2, 1, -_enemies.Count);
+                Vector3 pos = new Vector3((_enemies.Count * 2) + 2, 1, 5 -_enemies.Count*3);
                 GameObject enemy = Instantiate(c.Prefab, pos, Quaternion.identity);
                 enemy.GetComponent<CharacterBehaviour>().CharacterFaction = Faction.Enemy;
 
@@ -115,6 +116,7 @@ public class GameDirector : MonoBehaviour
         {
             Debug.Log($"Starting new game with {_gameState.PlayerCharacter.CharacterName}");
         } 
+        _currentPlayer.Value = _playerCharacterObject;
         _turnController.StartRound();
         _targetIdx = 0;
         _currentTarget.Value = _enemies[_targetIdx];

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3059519231851643216}
   - component: {fileID: 8249669772275466200}
   - component: {fileID: 357709411209573343}
+  - component: {fileID: -1346211112237331334}
   m_Layer: 0
   m_Name: GreenCharacter
   m_TagString: Untagged
@@ -112,8 +113,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterTemplate: {fileID: 11400000, guid: 49c2175f8f045784499e2f972edd0266, type: 2}
   CharacterFaction: 0
+  Health:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: d20cca733a9c84b4cb1f4dab6476571c, type: 2}
+  _startingHealth:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: 832077b55de41ab409bfee398d913ae5, type: 2}
   _currentTarget: {fileID: 11400000, guid: 2b6bf8eb550bca946b94ca530147b319, type: 2}
+  _currentPlayer: {fileID: 11400000, guid: 7332d8ea4a019d84c9d2077cd9f02798, type: 2}
   _targetHighlight: {fileID: 5690340302658726832}
+  _turnController: {fileID: 11400000, guid: 157a1d3127224664dbfe148c0eebc936, type: 2}
+--- !u!1183024399 &-1346211112237331334
+LookAtConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6990111199065779055}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_Roll: 0
+  m_WorldUpObject: {fileID: 0}
+  m_UseUpObject: 0
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources: []
 --- !u!1001 &6653467600107133480
 PrefabInstance:
   m_ObjectHideFlags: 0

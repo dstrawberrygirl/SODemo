@@ -1,4 +1,4 @@
-using System.Collections;
+using ScriptableObjectArchitecture;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +20,9 @@ public class TurnController : ScriptableObject
     public int TurnsPerRound => _turnsPerRound;
     private int _roundCounter;
     public int RoundCounter => _roundCounter;
+    // [SerializeField] private GameObjectVariable _playerRef;
+    // [SerializeField] private GameObjectVariable _enemyRef;
+    // public GameObjectVariable _targetRef;
     public void StartRound()
     {
         _turnIdx = 1;

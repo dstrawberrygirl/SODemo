@@ -1,3 +1,4 @@
+using ScriptableObjectArchitecture;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,9 +8,10 @@ public enum Faction { Friendly, Enemy }
 public class Character : ScriptableObject
 {
     public string CharacterName;
-    public float InitialHealth = 100f;
     public List<Attack> Abilities;
     public GameObject Prefab;
+
+    public FloatReference Health;
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -21,8 +23,4 @@ public class Character : ScriptableObject
     }
 #endif
 
-
-    #region SOAEnhanced
-    public ScriptableObjectArchitecture.FloatVariable Health;
-    #endregion
 }

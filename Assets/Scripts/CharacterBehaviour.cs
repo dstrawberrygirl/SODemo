@@ -1,35 +1,72 @@
 using ScriptableObjectArchitecture;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class CharacterBehaviour : MonoBehaviour
 {
     public Character CharacterTemplate;
     public Faction CharacterFaction;
-    private float _currentHealth;
-    public float CurrentHealth => _currentHealth;
-    public float CurrentHealthNormalized => _currentHealth / 100;
+    public FloatReference Health;
+    [SerializeField] private FloatReference _startingHealth = default(FloatReference);
     [SerializeField] private GameObjectVariable _currentTarget;
+    [SerializeField] private GameObjectVariable _currentPlayer;
 
     [SerializeField] private GameObject _targetHighlight;
+    [SerializeField] private TurnController _turnController;
+    private LookAtConstraint _lookAtConstraint;
 
     private void Start()
     {
-        _currentHealth = CharacterTemplate.InitialHealth;
+        _lookAtConstraint = GetComponent<LookAtConstraint>();
         _currentTarget.AddListener(HandleTargetChanged);
+        Health.Value = _startingHealth.Value;
+        CharacterTemplate.Health = Health;
+    }
+    private void OnDestroy(){
+        _currentTarget.RemoveListener(HandleTargetChanged);
     }
 
     public void HandleDamageTaken(float incomingDamage)
     {
-        _currentHealth = Mathf.Clamp(_currentHealth - incomingDamage, 0, 100f);
+        CharacterTemplate.Health.Value = Mathf.Clamp(CharacterTemplate.Health.Value - incomingDamage, 0, 100f);
+        Debug.Log($"{CharacterTemplate.CharacterName} health: {CharacterTemplate.Health.Value}");
+        _turnController.EndTurn();
     }
 
-    public void HandleTargetChanged()
+    private void HandleTargetChanged()
     {
         _targetHighlight.SetActive(false);
         
-        if (_currentTarget.Value && _currentTarget.Value == this.gameObject)
+        if (_currentTarget.Value == null){
+            return;
+        }
+        // highlight the targeted enemy
+        if (_currentTarget.Value == this.gameObject)
         {
             _targetHighlight.SetActive(true);
+        }
+
+        // player looks at the current target
+        if (_currentPlayer.Value == this.gameObject)
+        {
+            AddOrSetConstraintSource(_currentTarget.Value.transform);
+        }
+        else // everyone else looks at player
+        {
+            AddOrSetConstraintSource(_currentPlayer.Value.transform);
+        }
+        _lookAtConstraint.constraintActive = true;
+    }
+
+    private void AddOrSetConstraintSource(Transform target)
+    {
+        if (_lookAtConstraint.sourceCount == 0)
+        {
+            _lookAtConstraint.AddSource(new ConstraintSource { sourceTransform = target, weight = 1.0f});
+        } 
+        else
+        {
+            _lookAtConstraint.SetSource(0, new ConstraintSource { sourceTransform = target, weight = 1.0f});
         }
     }
 }

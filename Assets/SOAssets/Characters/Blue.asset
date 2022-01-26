@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Blue
   m_EditorClassIdentifier: 
   CharacterName: Blue
-  InitialHealth: 100
+  Health:
+    _useConstant: 1
+    _constantValue: 100
+    _variable: {fileID: 0}
   Abilities:
   - {fileID: 11400000, guid: 2814182ad39f75548881beeec95ed2c2, type: 2}
   - {fileID: 11400000, guid: 5960e6b3d8d8f994ea7c72e2018eb1c7, type: 2}

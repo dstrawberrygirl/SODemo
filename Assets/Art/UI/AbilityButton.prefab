@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -331,7 +331,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1345241286215012243}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6072628645014386456}
+        m_TargetAssemblyTypeName: AbilityUI, Assembly-CSharp
+        m_MethodName: HandleAttackButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6072628645014386456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,3 +358,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackNameText: {fileID: 2944589114673221993}
   _attackIcon: {fileID: 1345241286215012243}
+  _player: {fileID: 11400000, guid: 7332d8ea4a019d84c9d2077cd9f02798, type: 2}
+  _target: {fileID: 11400000, guid: 2b6bf8eb550bca946b94ca530147b319, type: 2}
