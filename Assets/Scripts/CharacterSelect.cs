@@ -11,25 +11,4 @@ public class CharacterSelect : MonoBehaviour
     {
         _gameState.SelectPlayerCharacter(_character);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // [SerializeField] private PlayerSelectedCustomEvent _customPlayerSelected;
-
-    // public void RaiseCharacterSelectEvent()
-    // {
-    //     // We could raise this event here but GameState can't listen for events, so we'd have
-    //     // to set the player here also.
-    //     _customPlayerSelected.Raise(new PlayerSelectedPayload { SelectedCharacter = _character });
-    // }
 }

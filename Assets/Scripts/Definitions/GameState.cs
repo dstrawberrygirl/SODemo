@@ -27,10 +27,10 @@ public class GameState : ScriptableObject
         _currentPhase = GamePhase.Setup;
     }
 
-    // public void SelectPlayerCharacter(Character character)
-    // {
-    //     _currentCharacter.PlayerCharacter = character;
-    // }
+    public void SelectPlayerCharacter(Character character)
+    {
+        _currentCharacter.PlayerCharacter = character;
+    }
     
     public void StartGame()
     {
@@ -39,13 +39,13 @@ public class GameState : ScriptableObject
     
 
     #region SOAEnhance
-    public PlayerSelectedCustomEvent CustomPlayerSelected;
+    // public PlayerSelectedCustomEvent CustomPlayerSelected;
 
-    public void SelectPlayerCharacter(Character character)
-    {
-        _currentCharacter.PlayerCharacter = character;
-        CustomPlayerSelected.Raise(new PlayerSelectedPayload { SelectedCharacter = character });
-    }
+    // public void SelectPlayerCharacter(Character character)
+    // {
+    //     _currentCharacter.PlayerCharacter = character;
+    //     CustomPlayerSelected.Raise(new PlayerSelectedPayload { SelectedCharacter = character });
+    // }
 
     #endregion
     
