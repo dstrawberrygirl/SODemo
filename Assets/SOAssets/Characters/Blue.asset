@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Blue
   m_EditorClassIdentifier: 
   CharacterName: Blue
-  Health:
-    _useConstant: 1
-    _constantValue: 100
-    _variable: {fileID: 0}
   Abilities:
   - {fileID: 11400000, guid: 2814182ad39f75548881beeec95ed2c2, type: 2}
   - {fileID: 11400000, guid: 5960e6b3d8d8f994ea7c72e2018eb1c7, type: 2}
   Prefab: {fileID: 8566447810406144790, guid: ed9fe6768e131d147a4975551218daa7, type: 3}
+  Health: {fileID: 11400000, guid: 5e1b43d9edbf6624989e3e59423ccf83, type: 2}
+  _startingHealth: {fileID: 11400000, guid: 832077b55de41ab409bfee398d913ae5, type: 2}

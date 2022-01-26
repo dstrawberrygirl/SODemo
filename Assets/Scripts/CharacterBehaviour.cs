@@ -6,8 +6,7 @@ public class CharacterBehaviour : MonoBehaviour
 {
     public Character CharacterTemplate;
     public Faction CharacterFaction;
-    public FloatReference Health;
-    [SerializeField] private FloatReference _startingHealth = default(FloatReference);
+    [SerializeField] private FloatReference _characterSpecificHealth;
     [SerializeField] private GameObjectVariable _currentTarget;
     [SerializeField] private GameObjectVariable _currentPlayer;
 
@@ -19,8 +18,15 @@ public class CharacterBehaviour : MonoBehaviour
     {
         _lookAtConstraint = GetComponent<LookAtConstraint>();
         _currentTarget.AddListener(HandleTargetChanged);
-        Health.Value = _startingHealth.Value;
-        CharacterTemplate.Health = Health;
+        if (_characterSpecificHealth.IsValueDefined)
+        {
+            CharacterTemplate.InitializeHealth(_characterSpecificHealth.Value);
+        }
+        else 
+        {
+            CharacterTemplate.InitializeHealth();
+        }
+        
     }
     private void OnDestroy(){
         _currentTarget.RemoveListener(HandleTargetChanged);

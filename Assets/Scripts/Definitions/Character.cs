@@ -11,8 +11,18 @@ public class Character : ScriptableObject
     public List<Attack> Abilities;
     public GameObject Prefab;
 
-    public FloatReference Health;
+    public FloatVariable Health;
+    [SerializeField] private FloatVariable _startingHealth = default(FloatVariable);
 
+    public void InitializeHealth()
+    {
+        Health.Value = _startingHealth.Value;
+    }
+    public void InitializeHealth(float newBaseHealth)
+    {
+        Health.Value = newBaseHealth;
+    }
+    
 #if UNITY_EDITOR
     private void OnValidate()
     {

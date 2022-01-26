@@ -19,7 +19,6 @@ public class EnemyAI : MonoBehaviour
     }
     private void HandleTurnStateChanged(TurnStateEventPayload evt)
     {
-        Debug.Log($"Current turn: {evt.CurrentTurn}");
         if (evt.CurrentTurn == _myTurnState)
         {
             StartCoroutine(DoAttack());

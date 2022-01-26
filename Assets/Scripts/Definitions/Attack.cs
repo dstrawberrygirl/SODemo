@@ -1,4 +1,4 @@
-using System;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Demo Game/Attack")]
@@ -11,7 +11,7 @@ public class Attack : ScriptableObject
 
     private void OnEnable()
     {
-        Debug.Log($"{name} is checking the name of the new SO asset");
+        // Debug.Log($"<color=green>{name} is enabled!</color>");
         if (string.IsNullOrEmpty(DisplayName))
         {
             DisplayName = this.name;
@@ -20,11 +20,34 @@ public class Attack : ScriptableObject
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        Debug.Log($"{name} is validating!");
+        // Debug.Log($"<color=cyan>{name} is validating!</color>");
         if (string.IsNullOrEmpty(DisplayName))
         {
             DisplayName = this.name;
         }
+        if (Damage < 5)
+        {
+            Debug.Log($"<color=orange>{name} this attack looks too weak!</color>");
+        }
     }
-#endif
+#endif    
+
+
+#region v2
+
+    // public FloatVariable MinimumRecommendedDamage;
+    // private void OnValidate()
+    // {
+    //     Debug.Log($"<color=cyan>{name} is validating!</color>");
+    //     if (string.IsNullOrEmpty(DisplayName))
+    //     {
+    //         DisplayName = this.name;
+    //     }
+        
+    //     if (Damage < MinimumRecommendedDamage.Value)
+    //     {
+    //         Debug.Log($"<color=orange>{name} this attack looks too weak!</color>");
+    //     }
+    // }
+    #endregion
 }

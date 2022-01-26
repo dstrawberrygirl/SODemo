@@ -12,16 +12,11 @@ public class GameState : ScriptableObject
     private GamePhase _currentPhase;
     public GamePhase CurrentPhase => _currentPhase;
 
-    #region SOA Enhance
-    public GameEvent PlayerSelected;
-    public PlayerSelectedCustomEvent CustomPlayerSelected;
-    #endregion
-
     public Character PlayerCharacter 
     {
         get
         {
-            if (_currentCharacter == null) _currentCharacter = new RuntimeCharacter();
+            if (_currentCharacter.PlayerCharacter == null) _currentCharacter = new RuntimeCharacter();
             return _currentCharacter.PlayerCharacter;
         }
     }
@@ -32,22 +27,33 @@ public class GameState : ScriptableObject
         _currentPhase = GamePhase.Setup;
     }
 
-    public void SelectPlayerCharacter(Character character)
-    {
-        _currentCharacter.PlayerCharacter = character;
-        if (PlayerSelected) PlayerSelected.Raise();
-        if (CustomPlayerSelected) CustomPlayerSelected.Raise(new PlayerSelectedPayload { SelectedCharacter = character });
-    }
-
+    // public void SelectPlayerCharacter(Character character)
+    // {
+    //     _currentCharacter.PlayerCharacter = character;
+    // }
+    
     public void StartGame()
     {
         _currentPhase = GamePhase.Started;
     }
+    
+
+    #region SOAEnhance
+    public PlayerSelectedCustomEvent CustomPlayerSelected;
+
+    public void SelectPlayerCharacter(Character character)
+    {
+        _currentCharacter.PlayerCharacter = character;
+        CustomPlayerSelected.Raise(new PlayerSelectedPayload { SelectedCharacter = character });
+    }
+
+    #endregion
+    
 }
 
 // Adding this attribute means we can save these values in the SO
 [System.Serializable]
-public class RuntimeCharacter
+public struct RuntimeCharacter
 {
     public Character PlayerCharacter;
 }

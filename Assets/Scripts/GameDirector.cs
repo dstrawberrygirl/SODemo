@@ -11,8 +11,8 @@ public class GameDirector : MonoBehaviour
     [SerializeField] private List<Character> _allCharacters;
 
     #region SOA Enhance
-    public GameEvent PlayerSelected;
-    public PlayerSelectedCustomEvent CustomPlayerSelected;
+    [SerializeField] private GameEvent _gameInit;
+    [SerializeField] private PlayerSelectedCustomEvent _customPlayerSelected;
     [SerializeField] private GameObjectCollection _enemies;
     [SerializeField] private GameObjectVariable _currentTarget;
     [SerializeField] private GameObjectVariable _currentPlayer;
@@ -21,25 +21,16 @@ public class GameDirector : MonoBehaviour
     private void Start()
     {
         Debug.Log($"Current Character: {_gameState.PlayerCharacter?.CharacterName} ");
-        //if (PlayerSelected) PlayerSelected.AddListener(SelectPlayerCharacter);
-        if (CustomPlayerSelected) CustomPlayerSelected.AddListener(SelectCustomPlayerCharacter);
-        _turnController.TurnStateChangedEvent.AddListener(HandleTurnStateChanged);
+        _customPlayerSelected.AddListener(SelectCustomPlayerCharacter);
         _turnController.InitializeTurns();
-    }
-
-    private void HandleTurnStateChanged(TurnStateEventPayload evt)
-    {
-        Debug.Log($"Current turn: {evt.CurrentTurn}");
+        _gameInit.Raise();
     }
 
     private void OnDestroy()
     {
-        //if (PlayerSelected) PlayerSelected.RemoveListener(SelectPlayerCharacter);
-        if (CustomPlayerSelected) CustomPlayerSelected.RemoveListener(SelectCustomPlayerCharacter);
-        _turnController.TurnStateChangedEvent.RemoveListener(HandleTurnStateChanged);
+        _customPlayerSelected.RemoveListener(SelectCustomPlayerCharacter);
         _enemies.Clear();
     }
-
 
     public void SelectPlayerCharacter()
     {
@@ -54,10 +45,9 @@ public class GameDirector : MonoBehaviour
         }
     }
 
-
-    // We don't even need to check GameState for which character is selected, it's given to us here
     private void SelectCustomPlayerCharacter(PlayerSelectedPayload evt)
     {
+        // We don't even need to check GameState for which character is selected, it's given to us here
         if (_playerCharacterObject != null)
         {
             Destroy(_playerCharacterObject);
@@ -69,6 +59,8 @@ public class GameDirector : MonoBehaviour
     {
         Vector3 pos = new Vector3(-2, 1, 0);
         _playerCharacterObject = Instantiate(playerCharacter.Prefab, pos, Quaternion.identity);
+        _playerCharacterObject.GetComponent<CharacterBehaviour>().CharacterFaction = Faction.Friendly;
+        // Now create the enemies
         InstantiateEnemies(playerCharacter);
     }
 
@@ -107,11 +99,13 @@ public class GameDirector : MonoBehaviour
             return;
         }
 
-        if (_playerCharacterObject == null)
+        if (_playerCharacterObject == null && _gameState.PlayerCharacter != null)
         {
             Debug.Log($"Starting game with previously-selected character: {_gameState.PlayerCharacter.CharacterName}");
+            // Make sure we instantiate a scene representation of our character
             SelectPlayerCharacter();
         }
+
         else 
         {
             Debug.Log($"Starting new game with {_gameState.PlayerCharacter.CharacterName}");
@@ -130,6 +124,7 @@ public class GameDirector : MonoBehaviour
         {
             return;
         }
+        // This is very quick 'n dirty for demo purposes ONLY!
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (_targetIdx + 1 >= _enemies.Count)

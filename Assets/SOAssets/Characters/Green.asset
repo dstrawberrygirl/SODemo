@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Green
   m_EditorClassIdentifier: 
   CharacterName: Green
-  InitialHealth: 100
   Abilities:
   - {fileID: 11400000, guid: 2814182ad39f75548881beeec95ed2c2, type: 2}
   - {fileID: 11400000, guid: 71101d3a96da8c74b9ab5184e6dfef44, type: 2}
   Prefab: {fileID: 6990111199065779055, guid: f22f7e7a6f771a448950d662f497cc40, type: 3}
+  Health: {fileID: 11400000, guid: d20cca733a9c84b4cb1f4dab6476571c, type: 2}
+  _startingHealth: {fileID: 11400000, guid: 832077b55de41ab409bfee398d913ae5, type: 2}

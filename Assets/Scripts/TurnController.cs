@@ -1,7 +1,5 @@
-using ScriptableObjectArchitecture;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 [CreateAssetMenu(menuName = "Demo Game/Turn Controller")]
 public class TurnController : ScriptableObject
@@ -20,9 +18,25 @@ public class TurnController : ScriptableObject
     public int TurnsPerRound => _turnsPerRound;
     private int _roundCounter;
     public int RoundCounter => _roundCounter;
-    // [SerializeField] private GameObjectVariable _playerRef;
-    // [SerializeField] private GameObjectVariable _enemyRef;
-    // public GameObjectVariable _targetRef;
+
+    public void InitializeTurns()
+    {
+        _turnOrder = new List<TurnState>();
+        _turnIdx = 0;
+        _roundCounter = 0;
+        TurnState t = _startTurnState;
+        _turnOrder.Add(t);
+
+        for (int i = 0; i < _turnsPerRound; i++)
+        {
+            TurnState nextTurn = t.GetNextTurnState();
+            _turnOrder.Add(nextTurn);
+            t = nextTurn;
+        }
+
+        _turnOrder.Add(_endTurnState);
+        TurnStateChangedEvent.Raise(new TurnStateEventPayload() { CurrentTurn = CurrentTurnState });
+    }
     public void StartRound()
     {
         _turnIdx = 1;
@@ -57,23 +71,4 @@ public class TurnController : ScriptableObject
         TurnStateChangedEvent.Raise(new TurnStateEventPayload() { CurrentTurn = CurrentTurnState });
     }
 
-    public void InitializeTurns()
-    {
-        _turnOrder = new List<TurnState>();
-        _turnIdx = 0;
-        _roundCounter = 0;
-        TurnState t = _startTurnState;
-        _turnOrder.Add(t);
-
-        for (int i = 0; i < _turnsPerRound; i++)
-        {
-            TurnState nextTurn = t.GetNextTurnState();
-            _turnOrder.Add(nextTurn);
-            t = nextTurn;
-        }
-
-        _turnOrder.Add(_endTurnState);
-        // if (_turnOrderUpdateEvent) _turnOrderUpdateEvent.Raise();
-        TurnStateChangedEvent.Raise(new TurnStateEventPayload() { CurrentTurn = CurrentTurnState });
-    }
 }

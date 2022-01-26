@@ -113,14 +113,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterTemplate: {fileID: 11400000, guid: ebb2adfe79f59f94ba2bad65d2d21b94, type: 2}
   CharacterFaction: 0
-  Health:
-    _useConstant: 0
-    _constantValue: 0
-    _variable: {fileID: 11400000, guid: 5e1b43d9edbf6624989e3e59423ccf83, type: 2}
-  _startingHealth:
-    _useConstant: 0
-    _constantValue: 0
-    _variable: {fileID: 11400000, guid: 832077b55de41ab409bfee398d913ae5, type: 2}
+  _characterSpecificHealth:
+    _useConstant: 1
+    _constantValue: 30
+    _variable: {fileID: 0}
   _currentTarget: {fileID: 11400000, guid: 2b6bf8eb550bca946b94ca530147b319, type: 2}
   _currentPlayer: {fileID: 11400000, guid: 7332d8ea4a019d84c9d2077cd9f02798, type: 2}
   _targetHighlight: {fileID: 8479705393664871912}

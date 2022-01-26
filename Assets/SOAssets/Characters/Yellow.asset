@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Yellow
   m_EditorClassIdentifier: 
   CharacterName: Yellow
-  InitialHealth: 100
   Abilities:
   - {fileID: 11400000, guid: 71101d3a96da8c74b9ab5184e6dfef44, type: 2}
   - {fileID: 11400000, guid: cecd6c1d3e3617c4bbd5e6f33c2cfd7c, type: 2}
   Prefab: {fileID: 6384877214935023015, guid: d44c11760a1f1634a9ea3497496b1013, type: 3}
+  Health: {fileID: 11400000, guid: 0f51959cdd8c6f14d9eb808cc4e810ad, type: 2}
+  _startingHealth: {fileID: 11400000, guid: 832077b55de41ab409bfee398d913ae5, type: 2}
