@@ -13,32 +13,31 @@ public class TurnUI : MonoBehaviour
     [SerializeField] private GameEvent _gameInit;
     #endregion
     
-    // private void Start()
-    // {
-    //     // This can end up in a race condition, where the turn controller initialization has already happened and we miss
-    //     // the first event. Ideally, we'd have a "game start" event after the turn controller is set up before hitting this
-    //     _turnController.TurnStateChangedEvent.AddListener(HandleTurnStateChanged);
-    // }
-    // private void OnDestroy()
-    // {
-    //     _turnController.TurnStateChangedEvent.RemoveListener(HandleTurnStateChanged);
-    // }
-
-#region v2
-    private void Awake()
+    private void Start()
     {
-        _gameInit.AddListener(HandleGameInit);
+        // This can end up in a race condition, where the turn controller initialization has already happened and we miss
+        // the first event. Ideally, we'd have a "game start" event after the turn controller is set up before hitting this
+        _turnController.TurnStateChangedEvent.AddListener(HandleTurnStateChanged);
     }
     private void OnDestroy()
     {
-        _gameInit.RemoveListener(HandleGameInit);
+        _turnController.TurnStateChangedEvent.RemoveListener(HandleTurnStateChanged);
     }
-    private void HandleGameInit()
-    {
-        _turnController.TurnStateChangedEvent.AddListener(HandleTurnStateChanged);
-    }
-#endregion
 
+#region v2
+    // private void Awake()
+    // {
+    //     _gameInit.AddListener(HandleGameInit);
+    // }
+    // private void OnDestroy()
+    // {
+    //     _gameInit.RemoveListener(HandleGameInit);
+    // }
+    // private void HandleGameInit()
+    // {
+    //     _turnController.TurnStateChangedEvent.AddListener(HandleTurnStateChanged);
+    // }
+#endregion
 
     private void HandleTurnStateChanged(TurnStateEventPayload evt)
     {
