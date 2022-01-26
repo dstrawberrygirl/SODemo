@@ -16,3 +16,4 @@ MonoBehaviour:
   DisplayIcon: {fileID: 21300000, guid: 508009994a0e87f40ae7b1bc0f0bfac8, type: 3}
   Damage: 20
   AttackFX: {fileID: 3250267332320686614, guid: d17764c84facb7c47a2787b9276d9a01, type: 3}
+  MinimumRecommendedDamage: {fileID: 11400000, guid: ecd7ffc888789324abcf4ff384f51b3e, type: 2}

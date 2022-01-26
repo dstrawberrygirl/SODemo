@@ -26,11 +26,6 @@ public class GameState : ScriptableObject
         _currentCharacter = new RuntimeCharacter();
         _currentPhase = GamePhase.Setup;
     }
-
-    // public void SelectPlayerCharacter(Character character)
-    // {
-    //     _currentCharacter.PlayerCharacter = character;
-    // }
     
     public void StartGame()
     {

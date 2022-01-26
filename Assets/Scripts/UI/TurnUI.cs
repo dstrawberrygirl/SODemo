@@ -8,23 +8,8 @@ public class TurnUI : MonoBehaviour
     [SerializeField] private GameObject _turnDetails;
     [SerializeField] private  TurnController _turnController;
     private List<GameObject> _turns;
-
-    #region SOAEnhance
     [SerializeField] private GameEvent _gameInit;
-    #endregion
-    
-    // private void Start()
-    // {
-    //     // This can end up in a race condition, where the turn controller initialization has already happened and we miss
-    //     // the first event. Ideally, we'd have a "game start" event after the turn controller is set up before hitting this
-    //     _turnController.TurnStateChangedEvent.AddListener(HandleTurnStateChanged);
-    // }
-    // private void OnDestroy()
-    // {
-    //     _turnController.TurnStateChangedEvent.RemoveListener(HandleTurnStateChanged);
-    // }
 
-#region v2
     private void Awake()
     {
         _gameInit.AddListener(HandleGameInit);
@@ -37,8 +22,6 @@ public class TurnUI : MonoBehaviour
     {
         _turnController.TurnStateChangedEvent.AddListener(HandleTurnStateChanged);
     }
-#endregion
-
 
     private void HandleTurnStateChanged(TurnStateEventPayload evt)
     {
